@@ -15,7 +15,7 @@ for filegz in glob.glob("*.tar.gz"):
     for file in glob.glob("*_*_*_[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"):
         parts = file.split("_") # KABR_SDUS33_PTAABR_201212231126
         # STL_20121230_2137_TV0
-        newfp = "%s_%s_%s_%s" % (parts[0][1:], parts[3][:8], parts[3][8:12],
+        newfp = "%s_%s_%s_%s" % (parts[2][3:], parts[3][:8], parts[3][8:12],
                                  parts[2][:3])
         if parts[2][:3] in prods:
             shutil.copyfile(file, "/mesonet/ridge/input/"+ newfp)
