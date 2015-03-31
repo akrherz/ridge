@@ -7,7 +7,7 @@ import sys
 import time
 import subprocess
 import mx.DateTime
-prods = ['EET', 'N0R', 'N0Q', 'NET']
+prods = ['N0R', 'NET']
 
 os.chdir("ncdc")
 for filegz in glob.glob("*.tar.gz"):
@@ -19,7 +19,7 @@ for filegz in glob.glob("*.tar.gz"):
         # STL_20121230_2137_TV0
         # nexrad/NIDS/DMX/N0Q/N0Q_20140801_1304
         if parts[2][:3] in prods:
-            mydir = "/chinook/ldm/nexrad/NIDS/%s/%s" % (parts[0][1:], parts[2][:3])
+            mydir = "/chinook/ldm/nexrad/NIDS/%s/%s" % (parts[2][3:], parts[2][:3])
             if not os.path.isdir(mydir):
                 os.makedirs(mydir)
             newfn = "%s_%s_%s" % (parts[2][:3], parts[3][:8], parts[3][8:12])
