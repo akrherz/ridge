@@ -1,12 +1,9 @@
 """ Take an archive file downloaded from NCDC HAS and rename the files to what
  GEMPAK wants """
 import glob
-import shutil
 import os
-import sys
-import time
+import shutil
 import subprocess
-import mx.DateTime
 
 prods = ["N0R", "NET"]
 
@@ -21,7 +18,10 @@ for filegz in glob.glob("*.tar.gz"):
         # STL_20121230_2137_TV0
         # nexrad/NIDS/DMX/N0Q/N0Q_20140801_1304
         if parts[2][:3] in prods:
-            mydir = "/chinook/ldm/nexrad/NIDS/%s/%s" % (parts[2][3:], parts[2][:3])
+            mydir = "/chinook/ldm/nexrad/NIDS/%s/%s" % (
+                parts[2][3:],
+                parts[2][:3],
+            )
             if not os.path.isdir(mydir):
                 os.makedirs(mydir)
             newfn = "%s_%s_%s" % (parts[2][:3], parts[3][:8], parts[3][8:12])
