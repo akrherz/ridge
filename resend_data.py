@@ -1,8 +1,8 @@
 import glob
-import shutil
 import os
-import sys
+import shutil
 import time
+
 import mx.DateTime
 
 prods = ["TR0", "TV0", "N0Q", "N0S", "N0Z", "N0U", "NET"]
@@ -18,14 +18,12 @@ for nexrad in glob.glob("???"):
         for file in glob.glob("*_*_*"):
             # NOQ_YYYYMMDD_HHMM
             ts = mx.DateTime.strptime(file[4:].replace("_", ""), "%Y%m%d%H%M")
-            # testfp = ts.strftime("/mnt/mesonet/ARCHIVE/data/%Y/%m/%d/GIS/ridge/"+nexrad+"/"+prod+"/"+nexrad+"_"+prod+"_%Y%m%d%H%M.png")
-            # if os.path.isfile(testfp):
-            #    continue
             # Run!
-            # print 'Missing', nexrad, file
             shutil.copyfile(
                 file,
-                ts.strftime("/mesonet/ridge/input/" + nexrad + "_%Y%m%d_%H%M_" + prod),
+                ts.strftime(
+                    "/mesonet/ridge/input/" + nexrad + "_%Y%m%d_%H%M_" + prod
+                ),
             )
             cnt += 1
         while len(glob.glob("/mesonet/ridge/input/*")) > 10:
