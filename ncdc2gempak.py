@@ -1,5 +1,6 @@
-""" Take an archive file downloaded from NCDC HAS and rename the files to what
- GEMPAK wants """
+"""Take an archive file downloaded from NCDC HAS and rename the files to what
+GEMPAK wants"""
+
 import glob
 import os
 import shutil
